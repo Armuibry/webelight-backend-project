@@ -20,7 +20,7 @@ const upload = multer({storage})
 const router = express();
 
 
-router.get('/products',userAuth,getProduct)
+router.get('/products',getProduct)
 router.post('/products',upload.array('productImage'),createProduct)
 
 
