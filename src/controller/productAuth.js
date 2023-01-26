@@ -1,11 +1,11 @@
 const Product = require('../model/productModel');
 
-exports.getProduct = (req,res) => {
+exports.getProduct = async(req,res) => {
 
-    const product = Product.find({});
+    const product = await Product.find({});
     if(product){
 
-        res.status(200).json({product});
+        res.status(200).send(product);
     }else{
         res.status(400).json({
             message:"Something went wrong...!"
