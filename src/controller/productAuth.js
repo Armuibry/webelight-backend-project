@@ -2,9 +2,15 @@ const Product = require('../model/productModel');
 
 exports.getProduct = (req,res) => {
 
-    res.json({
-        message:"hi from server all ok"
-    })
+    const product = Product.find({});
+    if(product){
+
+        res.status(200).json({product});
+    }else{
+        res.status(400).json({
+            message:"Something went wrong...!"
+        })
+    }
 //    const product =  Product.find({});
 //    res.status(200).json(product);
 }
