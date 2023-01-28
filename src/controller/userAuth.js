@@ -32,7 +32,6 @@ exports.signup = (req, res) => {
 
                 }
             });
-            user
         });
 
 }
@@ -45,7 +44,8 @@ exports.signin = (req, res) => {
                 name: "error"
             })
 
-            if (data) {
+            if (data[0]) {
+                console.log(data);
                 const { password } = data[0];
                 const match = bcrypt.compareSync(req.body.password, password)
                 if (match) {
