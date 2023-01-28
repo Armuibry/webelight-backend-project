@@ -4,11 +4,13 @@ const connect = require('./connection.js')
 const userRoutes = require('./routes/userRoutes.js')
 const productRoutes = require('./routes/productRoutes');
 const adminRoutes = require('./routes/adminRoutes');
+const paymentRoutes = require('./routes/paymentRoute')
 
 const app = express();
 const PORT = 5000 || process.env.PORT
 
 app.use(cors());
+app.use('/api',paymentRoutes)
 app.use(express.json());
 app.use('/api',userRoutes)
 app.use('/api',productRoutes)
