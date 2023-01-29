@@ -1,7 +1,8 @@
 const stripe = require('stripe')(process.env.STRIP_SECRET)
 
-exports.getPayment = async(req,res)=>{
-    const { id , amount } = req.body;
+exports.getPayment = async(req , res)=>{
+    const id = req.body.id
+    const amount = req.body.amount
 
     try {
         const payment = await stripe.paymentIntents.create({
@@ -11,8 +12,6 @@ exports.getPayment = async(req,res)=>{
             payment_method: id,
             confirm: true
         })
-    
-        console.log("payment ", payment);
     
         res.status(200).json({
             message:"Payment Success",
